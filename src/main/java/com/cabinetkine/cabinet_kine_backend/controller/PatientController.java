@@ -2,6 +2,7 @@ package com.cabinetkine.cabinet_kine_backend.controller;
 
 import com.cabinetkine.cabinet_kine_backend.model.Patient;
 import com.cabinetkine.cabinet_kine_backend.service.PatientService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class PatientController {
     }
 
     @PostMapping
-    public Patient creerPatient(@RequestBody Patient patient){
+    public Patient creerPatient(@Valid @RequestBody Patient patient){
         return patientService.creerPatient(patient);
     }
 

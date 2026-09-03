@@ -2,6 +2,7 @@ package com.cabinetkine.cabinet_kine_backend.controller;
 
 import com.cabinetkine.cabinet_kine_backend.model.Seance;
 import com.cabinetkine.cabinet_kine_backend.service.SeanceService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class SeanceController {
     }
 
     @PostMapping
-    public Seance creerSeance(@RequestBody Seance seance){
+    public Seance creerSeance(@Valid @RequestBody Seance seance){
         return seanceService.creerSeance(seance);
     }
 

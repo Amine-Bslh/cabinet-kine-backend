@@ -2,6 +2,7 @@ package com.cabinetkine.cabinet_kine_backend.controller;
 
 import com.cabinetkine.cabinet_kine_backend.model.Paiement;
 import com.cabinetkine.cabinet_kine_backend.service.PaiementService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class PaiementController {
     }
 
     @PostMapping
-    public Paiement creerPaiement(@RequestBody Paiement paiement){
+    public Paiement creerPaiement(@Valid @RequestBody Paiement paiement){
         return paiementService.creerPaiement(paiement);
     }
 

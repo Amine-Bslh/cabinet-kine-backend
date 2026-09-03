@@ -2,6 +2,7 @@ package com.cabinetkine.cabinet_kine_backend.controller;
 
 import com.cabinetkine.cabinet_kine_backend.model.RendezVous;
 import com.cabinetkine.cabinet_kine_backend.service.RendezVousService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class RendezVousController {
     }
 
     @PostMapping
-    public RendezVous creerRendezVous(@RequestBody RendezVous rendezVous){
+    public RendezVous creerRendezVous(@Valid @RequestBody RendezVous rendezVous){
         return rendezVousService.creerRendezVous(rendezVous);
     }
 
