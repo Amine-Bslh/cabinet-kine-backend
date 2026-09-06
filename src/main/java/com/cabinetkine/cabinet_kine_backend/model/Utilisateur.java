@@ -21,4 +21,5 @@ public class Utilisateur {
     @NotBlank
     private String nom;
     private String role;
+    private String motDePasse;
 }
