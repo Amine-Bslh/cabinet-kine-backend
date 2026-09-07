@@ -2,6 +2,7 @@ package com.cabinetkine.cabinet_kine_backend.service;
 
 import com.cabinetkine.cabinet_kine_backend.model.Utilisateur;
 import com.cabinetkine.cabinet_kine_backend.repository.UtilisateurRepository;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,8 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new User(
                 utilisateur.getEmail(),
                 utilisateur.getMotDePasse(),
-                List.of()
-        );
+                List.of(new SimpleGrantedAuthority("ROLE_" + utilisateur.getRole()))        );
     }
 
 
