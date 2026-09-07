@@ -27,4 +27,13 @@ public class JwtService {
 
     }
 
+    public String extraireEmail(String token) {
+        return Jwts.parser()
+                .verifyWith(getSigningKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .getSubject();
+    }
+
 }
