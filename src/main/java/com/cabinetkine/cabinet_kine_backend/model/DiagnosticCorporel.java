@@ -4,33 +4,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
-public class RendezVous {
+public class DiagnosticCorporel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    private LocalDateTime date;
+    private LocalDate date;
 
-    private String statut;
+    private String zonesProblematiques;
 
-    @ManyToOne
+    private String prestationsRecommandees;
+
+    @OneToOne
     private Patient patient;
-
-    @ManyToOne
-    private Utilisateur creePar;
-
-    @ManyToOne
-    private Cure cure;
 
 }
