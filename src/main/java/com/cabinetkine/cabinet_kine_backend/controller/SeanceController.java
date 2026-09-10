@@ -31,5 +31,15 @@ public class SeanceController {
         return seanceService.trouverParId(id);
     }
 
+    @PutMapping("/{id}")
+    public Seance modifierSeance(@PathVariable Long id, @Valid @RequestBody Seance seance) {
+        return seanceService.modifierSeance(id, seance);
+    }
+
+    @DeleteMapping("/{id}")
+    public void supprimerSeance(@PathVariable Long id) {
+        seanceService.supprimerSeance(id);
+    }
+
 
 }

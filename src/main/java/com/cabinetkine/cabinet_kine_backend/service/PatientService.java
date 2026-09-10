@@ -26,4 +26,17 @@ public class PatientService {
     public Patient trouverParId(Long id){
         return patientRepository.findById(id).orElse(null);
     }
+
+    public Patient modifierPatient(Long id, Patient patient) {
+        patient.setId(id);
+        return patientRepository.save(patient);
+    }
+
+    public void supprimerPatient(Long id) {
+        try {
+            patientRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Impossible de supprimer ce patient : il a des rendez-vous, cures ou diagnostics associes.");
+        }
+    }
 }

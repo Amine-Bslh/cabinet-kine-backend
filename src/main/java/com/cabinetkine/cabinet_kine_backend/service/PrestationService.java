@@ -27,4 +27,17 @@ public class PrestationService {
         return prestationRepository.findById(id).orElse(null);
     }
 
+    public Prestation modifierPrestation(Long id, Prestation prestation) {
+        prestation.setId(id);
+        return prestationRepository.save(prestation);
+    }
+
+    public void supprimerPrestation(Long id) {
+        try {
+            prestationRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Impossible de supprimer cette prestation : elle est utilisee dans des seances.");
+        }
+    }
+
 }

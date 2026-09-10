@@ -26,4 +26,17 @@ public class RendezVousService {
         return rendezVousRepository.findById(id).orElse(null);
     }
 
+    public RendezVous modifierRendezVous(Long id, RendezVous rendezVous) {
+        rendezVous.setId(id);
+        return rendezVousRepository.save(rendezVous);
+    }
+
+    public void supprimerRendezVous(Long id) {
+        try {
+            rendezVousRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Impossible de supprimer ce rendez-vous : il a des seances ou paiements associes.");
+        }
+    }
+
 }

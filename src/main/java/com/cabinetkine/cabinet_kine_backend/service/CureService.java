@@ -27,4 +27,17 @@ public class CureService {
         return cureRepository.findById(id).orElse(null);
     }
 
+    public Cure modifierCure(Long id, Cure cure) {
+        cure.setId(id);
+        return cureRepository.save(cure);
+    }
+
+    public void supprimerCure(Long id) {
+        try {
+            cureRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Impossible de supprimer cette cure : des rendez-vous y sont associes.");
+        }
+    }
+
 }

@@ -26,4 +26,17 @@ public class SeanceService {
         return seanceRepository.findById(id).orElse(null);
     }
 
+    public Seance modifierSeance(Long id, Seance seance) {
+        seance.setId(id);
+        return seanceRepository.save(seance);
+    }
+
+    public void supprimerSeance(Long id) {
+        try {
+            seanceRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Impossible de supprimer cette seance.");
+        }
+    }
+
 }

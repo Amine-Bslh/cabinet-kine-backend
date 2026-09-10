@@ -31,4 +31,14 @@ public class PaiementController {
     public Paiement trouverPaiement(@PathVariable Long id){
         return paiementService.trouverParId(id);
     }
+
+    @PutMapping("/{id}")
+    public Paiement modifierPaiement(@PathVariable Long id, @Valid @RequestBody Paiement paiement) {
+        return paiementService.modifierPaiement(id, paiement);
+    }
+
+    @DeleteMapping("/{id}")
+    public void supprimerPaiement(@PathVariable Long id) {
+        paiementService.supprimerPaiement(id);
+    }
 }

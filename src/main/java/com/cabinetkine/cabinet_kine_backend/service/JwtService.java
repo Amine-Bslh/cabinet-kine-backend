@@ -16,16 +16,15 @@ public class JwtService {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 
-    public String genererToken(String email, String role){
-
+    public String genererToken(String email, String role, String nom) {
         return Jwts.builder()
                 .subject(email)
                 .claim("role", role)
+                .claim("nom", nom)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                 .signWith(getSigningKey())
                 .compact();
-
     }
 
     public String extraireEmail(String token) {

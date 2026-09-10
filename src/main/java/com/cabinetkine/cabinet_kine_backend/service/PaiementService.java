@@ -26,4 +26,17 @@ public class PaiementService {
         return paiementRepository.findById(id).orElse(null);
     }
 
+    public Paiement modifierPaiement(Long id, Paiement paiement) {
+        paiement.setId(id);
+        return paiementRepository.save(paiement);
+    }
+
+    public void supprimerPaiement(Long id) {
+        try {
+            paiementRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Impossible de supprimer ce paiement.");
+        }
+    }
+
 }

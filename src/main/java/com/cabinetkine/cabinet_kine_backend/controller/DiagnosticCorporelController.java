@@ -32,4 +32,14 @@ public class DiagnosticCorporelController {
         return diagnosticCorporelService.trouverParId(id);
     }
 
+    @PutMapping("/{id}")
+    public DiagnosticCorporel modifierDiagnostic(@PathVariable Long id, @Valid @RequestBody DiagnosticCorporel diagnostic) {
+        return diagnosticCorporelService.modifierDiagnostic(id, diagnostic);
+    }
+
+    @DeleteMapping("/{id}")
+    public void supprimerDiagnostic(@PathVariable Long id) {
+        diagnosticCorporelService.supprimerDiagnostic(id);
+    }
+
 }

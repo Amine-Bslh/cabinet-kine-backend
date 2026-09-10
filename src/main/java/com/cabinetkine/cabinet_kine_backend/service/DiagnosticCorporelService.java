@@ -27,4 +27,17 @@ public class DiagnosticCorporelService {
         return diagnosticCorporelRepository.findById(id).orElse(null);
     }
 
+    public DiagnosticCorporel modifierDiagnostic(Long id, DiagnosticCorporel diagnostic) {
+        diagnostic.setId(id);
+        return diagnosticCorporelRepository.save(diagnostic);
+    }
+
+    public void supprimerDiagnostic(Long id) {
+        try {
+            diagnosticCorporelRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Impossible de supprimer ce diagnostic.");
+        }
+    }
+
 }

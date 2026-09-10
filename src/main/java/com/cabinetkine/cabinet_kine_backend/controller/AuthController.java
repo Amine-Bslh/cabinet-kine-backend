@@ -34,8 +34,10 @@ public class AuthController {
                         loginRequest.getMotDePasse()
                 )
         );
+
         Utilisateur utilisateur = utilisateurRepository.findByEmail(loginRequest.getEmail()).orElseThrow();
-        return jwtService.genererToken(utilisateur.getEmail(), utilisateur.getRole());
+
+        return jwtService.genererToken(utilisateur.getEmail(), utilisateur.getRole(), utilisateur.getNom());
     }
 
 

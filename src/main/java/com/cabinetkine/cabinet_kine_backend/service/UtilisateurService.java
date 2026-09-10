@@ -30,4 +30,20 @@ public class UtilisateurService {
         return utilisateurRepository.findById(id).orElse(null);
     }
 
+    public Utilisateur modifierUtilisateur(Long id, Utilisateur utilisateur) {
+        utilisateur.setId(id);
+        if (utilisateur.getMotDePasse() != null && !utilisateur.getMotDePasse().isBlank()) {
+            utilisateur.setMotDePasse(passwordEncoder.encode(utilisateur.getMotDePasse()));
+        }
+        return utilisateurRepository.save(utilisateur);
+    }
+
+    public void supprimerUtilisateur(Long id) {
+        try {
+            utilisateurRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("Impossible de supprimer cet utilisateur : il a des rendez-vous associes.");
+        }
+    }
+
 }

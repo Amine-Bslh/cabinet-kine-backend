@@ -32,4 +32,14 @@ public class CureController {
         return cureService.trouverParId(id);
     }
 
+    @PutMapping("/{id}")
+    public Cure modifierCure(@PathVariable Long id, @Valid @RequestBody Cure cure) {
+        return cureService.modifierCure(id, cure);
+    }
+
+    @DeleteMapping("/{id}")
+    public void supprimerCure(@PathVariable Long id) {
+        cureService.supprimerCure(id);
+    }
+
 }

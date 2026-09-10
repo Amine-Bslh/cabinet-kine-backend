@@ -31,6 +31,16 @@ public class UtilisateurController {
         return utilisateurService.trouverParId(id);
     }
 
+    @PutMapping("/{id}")
+    public Utilisateur modifierUtilisateur(@PathVariable Long id, @RequestBody Utilisateur utilisateur) {
+        return utilisateurService.modifierUtilisateur(id, utilisateur);
+    }
+
+    @DeleteMapping("/{id}")
+    public void supprimerUtilisateur(@PathVariable Long id) {
+        utilisateurService.supprimerUtilisateur(id);
+    }
+
 
 
 }

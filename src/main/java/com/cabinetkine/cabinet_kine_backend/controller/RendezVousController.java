@@ -32,4 +32,14 @@ public class RendezVousController {
         return rendezVousService.trouverParId(id);
     }
 
+    @PutMapping("/{id}")
+    public RendezVous modifierRendezVous(@PathVariable Long id, @Valid @RequestBody RendezVous rendezVous) {
+        return rendezVousService.modifierRendezVous(id, rendezVous);
+    }
+
+    @DeleteMapping("/{id}")
+    public void supprimerRendezVous(@PathVariable Long id) {
+        rendezVousService.supprimerRendezVous(id);
+    }
+
 }

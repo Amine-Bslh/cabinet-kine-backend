@@ -32,4 +32,14 @@ public class PrestationController {
         return prestationService.trouverParId(id);
     }
 
+    @PutMapping("/{id}")
+    public Prestation modifierPrestation(@PathVariable Long id, @Valid @RequestBody Prestation prestation) {
+        return prestationService.modifierPrestation(id, prestation);
+    }
+
+    @DeleteMapping("/{id}")
+    public void supprimerPrestation(@PathVariable Long id) {
+        prestationService.supprimerPrestation(id);
+    }
+
 }

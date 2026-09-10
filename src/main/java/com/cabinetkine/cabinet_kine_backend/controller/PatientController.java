@@ -31,4 +31,14 @@ public class PatientController {
     public Patient trouverParId(@PathVariable Long id){
         return patientService.trouverParId(id);
     }
+
+    @PutMapping("/{id}")
+    public Patient modifierPatient(@PathVariable Long id, @Valid @RequestBody Patient patient) {
+        return patientService.modifierPatient(id, patient);
+    }
+
+    @DeleteMapping("/{id}")
+    public void supprimerPatient(@PathVariable Long id) {
+        patientService.supprimerPatient(id);
+    }
 }
